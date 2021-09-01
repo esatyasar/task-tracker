@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 
 function Form(tasks, setTasks) {
     
-    const [id, setId] = useState(2);
+    const [id, setId] = useState(1);
     const [text, setText] = useState("");
     const [day, setDay] = useState("");
     const [category,setCategory] = useState("")
@@ -13,7 +13,7 @@ function Form(tasks, setTasks) {
     const handleCategoryChange = (e) => setCategory(e.target.value);
     const handleIdChange = (e) => setId(id+1);
   
-    const [item,setItem] = useState({});
+    const [item,setItem] = useState({id:{id},text:{text},day:{day},category:{category}});
 
 
     const onSubmit = (e) =>{
@@ -22,17 +22,15 @@ function Form(tasks, setTasks) {
         if(!text || !day || !category){
             alert("plaese fill all fields")
         }else{
-            onCreate({text,day,category,isDone:false})
+            onCreate()
         }
         handleIdChange()
         console.log(tasks)
+        console.log(item)
     }
 
-    const onCreate = (id,task) =>{
-
-        const newtask = {id,...task}
-        setItem((state) => [...state,newtask])
-        console.log(newtask)
+    const onCreate = (id,text,day,category) =>{
+        setItem({...item, id,text,day,category})
     }
 
     return (

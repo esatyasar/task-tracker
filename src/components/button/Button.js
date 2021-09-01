@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import Form from "../form/Form"
 import List from "../list/List";
-import {InitialState} from "../InitialState";
+
 
 function Button() {
-    const [tasks, setTasks] = useState(InitialState)
+    const [tasks, setTasks] = useState([])
 
     const [isValid, setIsValid] = useState(true)
     const toggle = () =>{
