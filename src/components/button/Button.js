@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Form from "../form/Form"
-import List from "../list/List";
+import List from "../list/List"
+
 
 
 function Button() {
@@ -19,15 +20,12 @@ function Button() {
         setTasks(filtered)
     }
 
-    const addSuccess = (item) =>{
-        return !item
-    }
-   
     return (
         <div>
             <button onClick={toggle}>{isValid ? show: hide} </button>
             {!isValid && <Form tasks = {tasks} setTasks={setTasks} />}
-            <List deleteItem={deleteItem} tasks={tasks} addSuccess={addSuccess} />
+            <List deleteItem={deleteItem} tasks={tasks}/>
+           
         </div>
         
     )

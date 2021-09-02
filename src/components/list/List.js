@@ -1,29 +1,33 @@
-import React from 'react'
-import Success from "../success/Success"
+import React, {useState} from 'react'
 
-function List({tasks, deleteItem, addSuccess}) {
-   
+function List({tasks, deleteItem}) {
+    const [change,setChange] = useState(false)
+
+    const changeBg = ()=>{
+       setChange(!change)
+
+        
+    }
     return (
         <div>
             <div>
             {tasks.map((item) =>
-                <div key={item.id}>
+                <div className={change ? "bg-success":"bg-warning"} key={item.id}>
                     <ul>
                         <li>{item.text}</li>
                         <li>{item.day}</li>
                         <li>{item.category}</li>
                     </ul>
-                    <div>
-                    <button onClick={()=>deleteItem(item.id)}><i className="fas fa-times"></i></button>
-                    <button onClick ={()=>addSuccess(item.isDone)}><i className="fas fa-check"></i></button>
-                    </div>
-                    {item.isDone && <Success /> }
+
+                    <button onClick={()=>deleteItem(item.id)}><i className="fas fa-trash"></i> </button>
+                    <button onClick={changeBg}><i className={change ? "fas fa-times":"fas fa-check"}></i></button>
                     
-                    
+                    {console.log(item)}
+                
                 </div>
             )}
             </div>
-        
+            
         </div>
     )
 }
