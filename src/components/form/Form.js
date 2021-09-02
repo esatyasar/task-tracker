@@ -1,36 +1,30 @@
 import React,{useState} from 'react'
 
 
-function Form(tasks, setTasks) {
+function Form({tasks,setTasks}) {
     
     const [id, setId] = useState(1);
     const [text, setText] = useState("");
     const [day, setDay] = useState("");
     const [category,setCategory] = useState("")
+    
   
     const handleTextChange = (e) => setText(e.target.value);
     const handleDayChange = (e) => setDay(e.target.value);
     const handleCategoryChange = (e) => setCategory(e.target.value);
     const handleIdChange = (e) => setId(id+1);
   
-    const [item,setItem] = useState({id:{id},text:{text},day:{day},category:{category}});
-
-
     const onSubmit = (e) =>{
         e.preventDefault()
 
         if(!text || !day || !category){
             alert("plaese fill all fields")
         }else{
-            onCreate()
+            const newtasks = {id:id, text:text, day:day,category:category,isDone:false}
+            
+            setTasks([newtasks,...tasks])
         }
         handleIdChange()
-        console.log(tasks)
-        console.log(item)
-    }
-
-    const onCreate = (id,text,day,category) =>{
-        setItem({...item, id,text,day,category})
     }
 
     return (
