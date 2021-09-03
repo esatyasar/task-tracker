@@ -20,11 +20,21 @@ function Button() {
         setTasks(filtered)
     }
 
+    const toggleIsDone = (id) =>{
+        const updateTasks = [...tasks].map((update) =>{
+            if(update.id ==id){
+                update.isDone = !update.isDone
+            }
+            return update
+        })
+        setTasks(updateTasks)
+    }
+
     return (
         <div>
             <button onClick={toggle}>{isValid ? show: hide} </button>
             {!isValid && <Form tasks = {tasks} setTasks={setTasks} />}
-            <List deleteItem={deleteItem} tasks={tasks}/>
+            <List deleteItem={deleteItem} tasks={tasks} toggleIsDone={toggleIsDone}/>
            
         </div>
         
