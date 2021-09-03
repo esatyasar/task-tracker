@@ -1,11 +1,16 @@
 import React, {useState} from 'react'
 
-function List({tasks, deleteItem, toggleIsDone}) {
+function List({tasks, deleteItem, setTasks}) {
     const [change,setChange] = useState(false)
 
-    const changeBg = ()=>{
-       setChange(!change)
-
+    const changeBg = (id)=>{
+      const changed = tasks.map((item)=>{
+            if(item.id === id){
+                setChange(!change)
+            } 
+        })
+       setTasks(changed)
+        
     }
     return (
         <div>
@@ -17,10 +22,9 @@ function List({tasks, deleteItem, toggleIsDone}) {
                         <li>{item.day}</li>
                         <li>{item.category}</li>
                     </ul>
-
                     <button onClick={()=>deleteItem(item.id)}><i className="fas fa-trash"></i> </button>
-                    <button onClick={changeBg}><i className={change ? "fas fa-times":"fas fa-check"}></i></button>
-                    <input type="checkbox" name="check" id="check" onChange={toggleIsDone(item.id)} checked={item.isDone}/>
+                    <button onClick={() =>changeBg(item.id)}><i className={change ? "fas fa-times":"fas fa-check"}></i></button>
+                    
                     {console.log(item)}
                 
                 </div>
