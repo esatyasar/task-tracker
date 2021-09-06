@@ -1,34 +1,26 @@
-import React, {useState} from 'react'
+import React from 'react'
+import "./List.css"
 
-function List({tasks, deleteItem, setTasks}) {
-    const [change,setChange] = useState(false)
 
-    const changeBg = (id)=>{
-      const changed = tasks.map((item)=>{
-            if(item.id === id){
-                setChange(!change)
-            } 
-        })
-       setTasks(changed)
-        
-    }
+function List({tasks, deleteItem, changeBg}) {
     return (
         <div>
             <div>
             {tasks.map((item) =>
-                <div className={change ? "bg-success":"bg-warning"} key={item.id}>
-                    <ul>
+                <div  className={item.isDone ? "bg-success":"bg-warning"} key={item.id}>
+                    <ul >
                         <li>{item.text}</li>
                         <li>{item.day}</li>
                         <li>{item.category}</li>
                     </ul>
-                    <button onClick={()=>deleteItem(item.id)}><i className="fas fa-trash"></i> </button>
-                    <button onClick={() =>changeBg(item.id)}><i className={change ? "fas fa-times":"fas fa-check"}></i></button>
+                    <div className="icons">
+                        <button onClick={()=>deleteItem(item.id)}><i className="fas fa-trash trash"></i> </button>
+                        <button onClick={() =>changeBg(item.id)}><i className={item.isDone ? "fas fa-times check":"fas fa-check check"}></i></button>
+                    </div>
                     
-                    {console.log(item)}
-                
-                </div>
+                </div>         
             )}
+         
             </div>
             
         </div>

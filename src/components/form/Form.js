@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import "./Form.css"
 
 
 function Form({tasks,setTasks}) {
@@ -29,11 +30,11 @@ function Form({tasks,setTasks}) {
 
     return (
         <form onSubmit={onSubmit} >
-            <div>
+            <div className="form-input">
                 <label htmlFor="task">Task</label>
                 <input onChange = {handleTextChange} name="task" type="text" id="task" value={text} placeholder="enter a task name"/>
             </div>
-            <div>
+            <div className="form-input">
                 <label htmlFor="category">Task Category</label>
                 <select onChange={handleCategoryChange} name="category" id="category" value={category}>
                     <option value="#">Select a Category</option>
@@ -44,12 +45,12 @@ function Form({tasks,setTasks}) {
                     <option value="generic">Generic</option>
                 </select>
             </div>
-            <div>
+            <div className="form-input">
                 <label htmlFor="date">Planned a date</label>
                 <input onChange={handleDayChange} type="date" name="date" id="date" value={day}/>
             </div>
             <div>
-                <button>
+                <button className="save-task">
                     Save Task
                 </button>
             </div>

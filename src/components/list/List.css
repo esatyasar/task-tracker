@@ -1,0 +1,37 @@
+ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    margin-top:1rem;
+    text-align: left;
+    width: 80%;
+    color: white;
+    
+}
+.icons{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    height: 3vh;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+.trash,
+.check{
+    font-size: 1.5rem;
+}
+
+.trash{
+    color: red;
+    background-color: white;
+}
+.check{
+    color: green;
+    background-color: white;
+
+}
